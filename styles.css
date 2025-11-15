@@ -1,0 +1,39 @@
+html, body {
+    background-color: rgb(42, 42, 39);
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#gameGrid {
+    margin-top: 50%;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    background-color: rgb(54, 52, 50);
+    width: 50vh;
+    height: 50vh;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+.gridBlock {
+    border: 0.1px solid black;
+    border-radius: 2px;
+    padding: 25%;
+    width: 50%;
+    height: 50%;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: 0.1s;
+    text-align: center;
+}
+
+.gridBlock:hover {
+    opacity: 1.0;
+    transform: scale(1.1);
+    border: 1px solid black;
+}
+
+.gridBlock:active { transform: scale(1.0); }
