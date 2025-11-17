@@ -53,8 +53,8 @@ html, body {
     width: 75%;
     height: 75%;
     transition: 0.15s;
-    opacity: 0.6;
-    border-radius: 5px;
+    opacity: 0.7;
+    border-radius: 2px;
 }
 
 #cubeHold {
@@ -69,7 +69,7 @@ html, body {
 
 #remove {
     position: absolute;
-    top: 80%;
+    top: 89%;
     cursor: pointer;
     transition: 0.1s;
     border: 4px solid grey;
@@ -78,7 +78,7 @@ html, body {
 
 #buyBtn {
     position: absolute;
-    top: 85%;
+    top: 80%;
     cursor: pointer;
     transition: 0.1s;
     border: 4px solid blueviolet;

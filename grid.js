@@ -1,20 +1,22 @@
 const gameGrid = document.getElementById("gameGrid");
-
+const gridArray = [];
 class gridBlock {
-    constructor(gameGrid) {
+    constructor(gameGrid, index) {
         this.element = document.createElement("div");
         this.element.classList.add("gridBlock");
         this.taken = false;
         this.active;
+        this.gridIndex = index;
         gameGrid.appendChild(this.element);
 
         this.element.addEventListener("click", () => {
-            if (this.taken == false && addCube == true) {
-                addCube = false;
+            let newCube;
+            if (this.taken == false && selectedCube) {
                 const div = document.getElementById("cubeHold");
                 div.style.opacity = 0.0
 
-                let newCube = selectedCube;
+                newCube = selectedCube;
+                gridArray[this.gridIndex] = newCube;
                 this.element.appendChild(newCube.element);
 
                 this.active = setInterval(function () {
@@ -24,19 +26,38 @@ class gridBlock {
                         newCube.element.style.transform = "scale(1.0)";
                         newCube.element.style.opacity = "0.6";
                     }, 150)
-                    money.add(newCube.value);
+                    money.add(getRandomInt(newCube.value, (newCube.value * 2)));
                 }, newCube.speed);
 
                 this.taken = true;
                 selectedCube = null;
             }
             else if (removing == true) {
-                this.element.innerHTML = "";
-                this.taken = false;
-                clearInterval(this.active);
+                this.removeCube()
                 remove();
+            }
+            else if (this.taken == true && !selectedCube) {
+                selectedCube = gridArray[this.gridIndex];
+                this.removeCube()
+            }
+            else if (this.taken == true && selectedCube) {
+                let mergedLevel = selectedCube.level + gridArray[this.gridIndex].level;
+                if (mergedLevel == 0) { mergedLevel = 1 }
+                else if (mergedLevel > 5) { mergedLevel = 5 };
+                let mergedCube = generateCube(mergedLevel)
+                console.log("Merged Cube: " + mergedCube);
+                selectedCube = mergedCube;
+                this.removeCube()
             }
             
         });
+
+    }
+
+    removeCube() {
+        this.element.innerHTML = "";
+        this.taken = false;
+        gridArray[this.gridIndex] = null;
+        clearInterval(this.active);
     }
 }

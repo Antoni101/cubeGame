@@ -1,6 +1,5 @@
 let money;
 let removing = false
-let addCube = false;
 let selectedCube;
 
 class cube {
@@ -39,7 +38,7 @@ function fillGrid(blocks, rows) {
     money = new Money(25)
     const gameGrid = document.getElementById("gameGrid");
     for (i=0; i<blocks; i++) {
-        let Block = new gridBlock(gameGrid);
+        let Block = new gridBlock(gameGrid, i);
     }
 }
 
@@ -60,61 +59,44 @@ let cubePrice = 25;
 function buyCube() {
     let buyBtn = document.getElementById("buyBtn");
     if (money.value >= cubePrice) {
-        addCube = true;
         money.reduce(cubePrice);
-        cubePrice = Math.round(cubePrice * 1.5);
+        cubePrice = Math.round(cubePrice * 1.3);
         buyBtn.innerHTML = "Buy Cube $" + cubePrice;
-        selectedCube = generateCube(getRandomInt(1, 100));
+
+        let chance = getRandomInt(1, 100);
+
+        let level;
+        if (chance < 60) {   level = 0; }               
+        else if (chance < 85) { level = 1; }     
+        else if (chance < 95) { level = 2; }            
+        else if (chance < 99) { level = 3; }                
+        else { level = 4; }     
+
+        selectedCube = generateCube(level)
     }
 }
 
+const cubes = [
+    {level: 0, speed: 1500, value: 2},
+    {level: 1, speed: 1200, value: 7},
+    {level: 2, speed: 1000, value: 20},
+    {level: 3, speed: 800, value: 50},
+    {level: 4, speed: 700, value: 100},
+    {level: 5, speed: 500, value: 500},
+]
 
 function getRandomInt(min, max) { // min and max included 
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function generateCube(chance) {
-    let value, speed, level;
-
-    if (chance < 60) {               // 60%  — Level 1
-        value = getRandomInt(1, 3);
-        speed = getRandomInt(2600, 3000);
-        level = 1;
-    }
-    else if (chance < 85) {          // next 25% — Level 2
-        value = getRandomInt(5, 10);
-        speed = getRandomInt(1500, 2500);
-        level = 2;
-    }
-    else if (chance < 95) {          // next 10% — Level 3
-        value = getRandomInt(15, 30);
-        speed = getRandomInt(1000, 1300);
-        level = 3;
-    }
-    else if (chance < 99) {          // next 4% — Level 4
-        value = getRandomInt(50, 100);
-        speed = getRandomInt(700, 900);
-        level = 4;
-    }
-    else {                           // 1% — Level 5
-        value = getRandomInt(200, 500);
-        speed = getRandomInt(300, 500);
-        level = 5;
-    }
-
-    console.log(
-        `Generated Cube: \nLevel: ${level} | Value: ${value} | Speed: ${speed}`
-    );
-
-    return new cube(value, speed, level);
+function generateCube(level) {                  
+    return new cube(cubes[level].value, cubes[level].speed, level);
 }
 
-
-
-
 document.addEventListener("mousemove", (e) => {
+    const div = document.getElementById("cubeHold");
     if (selectedCube) {
-        const div = document.getElementById("cubeHold");
+        div.classList.remove("cube0");
         div.classList.remove("cube1");
         div.classList.remove("cube2");
         div.classList.remove("cube3");
@@ -122,13 +104,12 @@ document.addEventListener("mousemove", (e) => {
         div.classList.remove("cube5");
         div.classList.add("cube" + selectedCube.level)
         
-        if (addCube == true) {
-            div.style.opacity = 1.0
-            div.style.left = (e.pageX - 25) + "px";
-            div.style.top = (e.pageY - 25) + "px";
-        }
-        else {
-            div.style.opacity = 0.0
-        }
+        div.style.opacity = 1.0
+        div.style.left = (e.pageX - 25) + "px";
+        div.style.top = (e.pageY - 25) + "px";
+        
+    }
+    else {
+        div.style.opacity = 0.0
     }
 });
