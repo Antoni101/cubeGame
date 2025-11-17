@@ -1,0 +1,24 @@
+.cube1 {
+    border: 2px solid grey;
+    background-color: rgb(207, 197, 197);
+}
+
+.cube2 {
+    border: 2px solid green;
+    background-color: rgb(31, 179, 31);
+}
+
+.cube3 {
+    border: 2px solid rgb(61, 61, 181);
+    background-color: rgb(105, 161, 196);
+}
+
+.cube4 {
+    border: 2px solid rgb(197, 46, 46);
+    background-color: rgb(189, 92, 92);
+}
+
+.cube5 {
+    border: 2px solid rgb(12, 12, 12);
+    background-color: rgb(25, 24, 24);
+}

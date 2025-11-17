@@ -14,7 +14,7 @@ class gridBlock {
                 const div = document.getElementById("cubeHold");
                 div.style.opacity = 0.0
 
-                let newCube = new cube(1, 2000, 1);
+                let newCube = selectedCube;
                 this.element.appendChild(newCube.element);
 
                 this.active = setInterval(function () {
@@ -28,9 +28,11 @@ class gridBlock {
                 }, newCube.speed);
 
                 this.taken = true;
+                selectedCube = null;
             }
             else if (removing == true) {
                 this.element.innerHTML = "";
+                this.taken = false;
                 clearInterval(this.active);
                 remove();
             }
