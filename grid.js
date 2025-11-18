@@ -43,7 +43,7 @@ class gridBlock {
             else if (this.taken == true && selectedCube) {
                 let mergedLevel = selectedCube.level + gridArray[this.gridIndex].level;
                 if (mergedLevel == 0) { mergedLevel = 1 }
-                else if (mergedLevel > 5) { mergedLevel = 5 };
+                else if (mergedLevel > (cubes.length - 1)) { mergedLevel = (cubes.length - 1)};
                 let mergedCube = generateCube(mergedLevel)
                 console.log("Merged Cube: " + mergedCube);
                 selectedCube = mergedCube;

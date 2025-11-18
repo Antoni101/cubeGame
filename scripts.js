@@ -60,7 +60,7 @@ function buyCube() {
     let buyBtn = document.getElementById("buyBtn");
     if (money.value >= cubePrice) {
         money.reduce(cubePrice);
-        cubePrice = Math.round(cubePrice * 1.3);
+        cubePrice = Math.round(cubePrice * 1.1);
         buyBtn.innerHTML = "Buy Cube $" + cubePrice;
 
         let chance = getRandomInt(1, 100);
@@ -77,12 +77,13 @@ function buyCube() {
 }
 
 const cubes = [
-    {level: 0, speed: 1500, value: 2},
-    {level: 1, speed: 1200, value: 7},
-    {level: 2, speed: 1000, value: 20},
-    {level: 3, speed: 800, value: 50},
-    {level: 4, speed: 700, value: 100},
-    {level: 5, speed: 500, value: 500},
+    {level: 0, speed: 1500, value: 1},
+    {level: 1, speed: 1200, value: 3},
+    {level: 2, speed: 1000, value: 7},
+    {level: 3, speed: 800, value: 10},
+    {level: 4, speed: 700, value: 15},
+    {level: 5, speed: 500, value: 25},
+    {level: 6, speed: 300, value: 50},
 ]
 
 function getRandomInt(min, max) { // min and max included 
@@ -102,6 +103,7 @@ document.addEventListener("mousemove", (e) => {
         div.classList.remove("cube3");
         div.classList.remove("cube4");
         div.classList.remove("cube5");
+        div.classList.remove("cube6");
         div.classList.add("cube" + selectedCube.level)
         
         div.style.opacity = 1.0
