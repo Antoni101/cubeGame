@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>farmGame</title>
+    <title>cubeGame</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="cubes.css">
     <script src="scripts.js"></script>
@@ -12,8 +12,30 @@
 <body onload="fillGrid(25)">
     <div id="gameGrid"></div>
     <button id="remove" class="ubuntu" onclick="remove()">Remove</button>
-    <button id="buyBtn" class="ubuntu" onclick="buyCube()">Buy Random Cube $25</button>
+    <button id="buyBtn" class="ubuntu" onclick="buyCube()">Buy Random Cube $0</button>
 
-    <div id="cubeHold"></div>
+
+    <button class="ubuntu chancesBtn" onclick="openScreen(chanceScr)">Chances %</button>
+    <div id="chanceScr">
+        <button onclick="closeScreen(chanceScr)" class="closeBtn"></button>
+        <h1 class="chanceNote level0">Level 0 Cube ($1 - 2) 60% Chance</h1>
+        <h1 class="chanceNote level1">Level 1 Cube ($3 - 4) 25% Chance</h1>
+        <h1 class="chanceNote level2">Level 2 Cube ($7 - 8) 10% Chance</h1>
+        <h1 class="chanceNote level3">Level 3 Cube ($10 - 11) 4% Chance</h1>
+        <h1 class="chanceNote level4">Level 4 Cube ($15 - 16) 1% Chance</h1>
+        <h1 class="chanceNote level5">- Merge cubes to obtain higher levels cubes.</h1>
+    </div>
+
+    <button onclick="openScreen(helpScr)" class="helpBtn">?</button>
+    <div id="helpScr">
+        <button onclick="closeScreen(helpScr)" class="closeBtn"></button>
+        <h1 class="helpNote">Click on a cube and drag it to another cube to merge.</h1>
+        <h1 class="helpNote">Merging cubes adds both levels together, forming a new upgraded cube.</h1>
+        <h1 class="helpNote">Cube levels go from level 0 - 6. The higher the level the faster and more money it produces.</h1>
+        <h1 class="helpNote">A level 0 cube can only be merged with another level 0 cube. It cannot be merged with cubes of other levels.</h1>
+    </div>
+
+    <div id="cubeHold">
+    </div>
 </body>
 </html>

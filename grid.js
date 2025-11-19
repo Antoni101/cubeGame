@@ -24,7 +24,7 @@ class gridBlock {
                     newCube.element.style.opacity = "1.0";
                     setTimeout(function () {
                         newCube.element.style.transform = "scale(1.0)";
-                        newCube.element.style.opacity = "0.6";
+                        newCube.element.style.opacity = "0.9";
                     }, 150)
                     money.add(getRandomInt(newCube.value, (newCube.value * 2)));
                 }, newCube.speed);

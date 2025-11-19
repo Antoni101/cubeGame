@@ -3,7 +3,7 @@
 }
 
 .cube1 {
-    background-color: green;
+    background-color: rgb(12, 171, 12);
 }
 
 .cube2 {
@@ -11,7 +11,7 @@
 }
 
 .cube3 {
-    background-color: rgb(83, 40, 175);
+    background-color: rgb(208, 23, 23);
 }
 
 .cube4 {
@@ -19,9 +19,28 @@
 }
 
 .cube5 {
-    background-color: rgb(208, 23, 23);
+    background-color: rgb(69, 16, 183);
 }
 
 .cube6 {
     background-color: rgb(18, 18, 18);
+}
+
+.chanceNote {
+    padding: 30px;
+    font-size: 19px;
+    text-indent: 10px;
+    text-shadow: #1a1a19 1px 0 10px;
+}
+
+.level0 { color: white; }
+.level1 { color: rgb(12, 171, 12); }
+.level2 { color: rgb(104, 143, 233); }
+.level3 { color: rgb(208, 23, 23); }
+.level4 { color:gold; }
+.level5 {
+    font-size: 14px;
+    position: absolute;
+    top: 85%;
+    color:white; 
 }

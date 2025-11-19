@@ -1,6 +1,7 @@
 let money;
 let removing = false
 let selectedCube;
+let cubePrice = 0;
 
 class cube {
     constructor(value, speed, level) {
@@ -34,8 +35,16 @@ class Money {
     }
 }
 
+function closeScreen(screen) {
+    screen.style.display = "None";
+}
+
+function openScreen(screen) {
+    screen.style.display = "Block";
+}
+
 function fillGrid(blocks, rows) {
-    money = new Money(25)
+    money = new Money(0)
     const gameGrid = document.getElementById("gameGrid");
     for (i=0; i<blocks; i++) {
         let Block = new gridBlock(gameGrid, i);
@@ -55,12 +64,12 @@ function remove() {
     
 }
 
-let cubePrice = 25;
+
 function buyCube() {
     let buyBtn = document.getElementById("buyBtn");
-    if (money.value >= cubePrice) {
+    if (money.value >= cubePrice || cubePrice == 0) {
         money.reduce(cubePrice);
-        cubePrice = Math.round(cubePrice * 1.1);
+        cubePrice += 20;
         buyBtn.innerHTML = "Buy Cube $" + cubePrice;
 
         let chance = getRandomInt(1, 100);
