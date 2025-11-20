@@ -55,7 +55,7 @@ function remove() {
     let removeBtn = document.getElementById("remove");
     if (removing == true) {
         removing = false;
-        removeBtn.style.border = "4px solid grey";
+        removeBtn.style.border = "4px solid rgb(221, 42, 42)";
     }
     else {
         removing = true;
@@ -69,7 +69,9 @@ function buyCube() {
     let buyBtn = document.getElementById("buyBtn");
     if (money.value >= cubePrice || cubePrice == 0) {
         money.reduce(cubePrice);
-        cubePrice += 20;
+        if (cubePrice == 0) { cubePrice = 15; }
+        else { cubePrice = Math.round(cubePrice * 1.2); }
+        
         buyBtn.innerHTML = "Buy Cube $" + cubePrice;
 
         let chance = getRandomInt(1, 100);
